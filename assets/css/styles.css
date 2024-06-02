@@ -42,7 +42,7 @@ body {
 }
 
 button {
-    width: 100%;
+    width: 100px;
     padding: 10px;
     background-color: #007BFF;
     border: none;
@@ -50,8 +50,35 @@ button {
     color: white;
     font-size: 16px;
     cursor: pointer;
+    justify-content: center;
 }
 
 button:hover {
     background-color: #0056b3;
 }
+
+.white-container {
+    background-color: white;
+    padding: 20px; /* Optional: Add padding to create space around the content */
+    border-radius: 8px; /* Optional: Add border radius for a rounded corner effect */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: Add box shadow for a subtle depth effect */
+}
+
+th,
+td {
+    padding: 15px; /* Adjust the value as needed */
+}
+
+/* Adjust the color of the Edit button */
+.btn-primary {
+    background-color: blue; /* Change this to your desired color */
+    border-color: blue; /* Change this to your desired color */
+}
+
+/* Adjust the color of the Delete button */
+.btn-danger {
+    background-color: red; /* Change this to your desired color */
+    border-color: red; /* Change this to your desired color */
+}
+
+

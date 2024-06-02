@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UTeM - Foodbank</title>
+    <link rel="stylesheet" href="../assets/css/cafeOwner.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <header id="header" class="header fixed-top">
+        <div class="header-content">
+            <div class="user-info">
+                <span>MAHMOR MUSTAPA</span>
+            </div>
+        </div>
+    </header>
+    <div class="container">
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <img src="../assets/logo/foodbank.png" alt="UTeM Logo" class="sidebar-logo">
+                <h2>UTeM Foodbank</h2>
+            </div>
+            <ul>
+                <li><a href="adminDashboard.html" id="dashboard-link"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                <li><i class="fas fa-user-graduate"></i> Student
+                    <ul>
+                        <li><a href="studentRegistration.html" id="student-registration-link"><i></i> Registration</a></li>
+                        <li><a href="studentManagement.html" id="student-management-link"><i></i> Management</a></li>
+                    </ul>
+                </li>
+                <li><i class="fas fa-store-alt"></i> Cafe Owner
+                    <ul>
+                        <li><a href="cafeOwnerRegistration.html" id="cafe-owner-registration-link"><i></i> Registration</a></li>
+                        <li><a href="cafeOwnerManagement.html" id="cafe-owner-management-link"><i></i> Management</a></li>
+                    </ul>
+                </li>
+                <li><i class="fas fa-utensils"></i> Cafe
+                    <ul>
+                        <li><a href="cafeRegistration.html" id="cafe-registration-link"><i></i> Registration</a></li>
+                        <li><a href="cafeManagement.html" id="cafe-management-link"><i></i> Management</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="main-content">
+            <h1>Cafe Owner Management</h1>
+            <div class="white-container">
+                <div class="registerStudent-container">
+                    
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Search Cafe Owner</h5>
+            
+                            <form class="row g-3 align-items-center">
+                                <div class="col-md-6">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control me-2" id="services" placeholder="Enter Cafe Owner Name">
+                                        <button type="button" class="btn btn-primary" onclick="searchServices()">
+                                            Search
+                                        </button>
+                                    </div>
+                                </div>
+                            </form><!-- Horizontal Form -->
+            
+                        </div>
+                    </div>
+                    <section class="section">
+                        <div class="row">
+                            <div class="col-lg-12">
+            
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">
+                                            List of Student
+                                        </h5>
+            
+                                        <!-- Default Table -->
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">#</th>
+                                                    <th scope="col">Name</th>
+                                                    <th scope="col">Phone Number</th>
+                                                    <th scope="col">Cafe</th>
+                                                    <th scope="col">Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+            
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <!-- End Default Table Example -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <br>
+                    <div id="message"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../assets/js/cafeOwnerManagement.js"></script>
+    <script src="../assets/js/sidebar.js"></script>
+
+</body>
+</html>
