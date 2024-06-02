@@ -133,3 +133,14 @@ header {
     margin-right: 0;
 }
 
+
+.icon-text {
+    display: flex;
+    align-items: center;
+}
+
+.icon-text i {
+    margin-right: 10px; /* Adjust as needed */
+    margin-right: 60px; /* Adjust as needed */
+    font-size: 40px; /* Adjust the size of the icon */
+}
