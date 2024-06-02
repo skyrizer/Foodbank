@@ -42,6 +42,7 @@ header {
     background-color: #fcfcfc;
     padding: 20px;
     height: 100%;
+    font-size: 20px; /* Adjust the font size as needed */
     overflow-y: auto;
 }
 
@@ -62,11 +63,24 @@ header {
 }
 
 .sidebar ul li {
-    margin-bottom: 10px;
+    margin-bottom: 20px; /* Adjust the spacing as needed */
+}
+
+.sidebar li li {
+    margin-bottom: 40px; /* Adjust the spacing as needed */
+}
+
+.sidebar li ul {
+    margin-bottom: 40px; /* Adjust the spacing as needed */
+}
+
+.sidebar ul li li {
+    margin-bottom: 05px; /* Adjust the spacing as needed */
 }
 
 .sidebar ul li ul {
-    margin-left: 20px;
+    margin-left: 30px;
+    margin-bottom: 30px;
     list-style-type: disc;
 }
 
@@ -90,7 +104,23 @@ header {
     margin-bottom: 20px;
 }
 
-.stat {
+.student {
+    flex: 1;
+    background-color: #fffefe;
+    padding: 20px;
+    margin-right: 10px;
+    border-radius: 5px;
+    text-align: center;
+}
+.reservation {
+    flex: 1;
+    background-color: #fffefe;
+    padding: 20px;
+    margin-right: 10px;
+    border-radius: 5px;
+    text-align: center;
+}
+.cafe {
     flex: 1;
     background-color: #fffefe;
     padding: 20px;
