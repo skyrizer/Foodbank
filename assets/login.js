@@ -24,6 +24,8 @@ document.getElementById('loginForm').addEventListener('submit', async function (
             
             sessionStorage.setItem('userData', JSON.stringify(result));
 
+            window.location.href = "adminDashboard.html";
+
             console.log(sessionStorage.getItem('userData'))
             // Login successful, handle the response
             document.getElementById('message').innerText = 'Login successful!';
