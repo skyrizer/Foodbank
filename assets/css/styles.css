@@ -33,7 +33,8 @@ body {
     font-weight: bold;
 }
 
-.input-group input {
+.input-group input,
+.input-group select {
     width: 95%;
     padding: 8px;
     border: 1px solid #ccc;
