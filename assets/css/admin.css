@@ -130,6 +130,24 @@ header {
     text-align: center;
 }
 
+.donation {
+    flex: 1;
+    background-color: #fffefe;
+    padding: 20px;
+    margin-right: 10px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.dailyDonation {
+    flex: 1;
+    background-color: #fffefe;
+    padding: 20px;
+    margin-right: 10px;
+    border-radius: 5px;
+    text-align: center;
+}
+
 .stat:last-child {
     margin-right: 0;
 }
@@ -148,7 +166,9 @@ header {
 
 .student p,
 .cafe p,
-.reservation p {
+.reservation p
+.donation p
+.dailyDonation p {
     font-size: 25px; /* Adjust the size of the paragraph text */
     font-weight: bold;
 }
