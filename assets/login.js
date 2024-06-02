@@ -21,6 +21,10 @@ document.getElementById('loginForm').addEventListener('submit', async function (
         const result = await response.json();
 
         if (response.ok) {
+            
+            sessionStorage.setItem('userData', JSON.stringify(result));
+
+            console.log(sessionStorage.getItem('userData'))
             // Login successful, handle the response
             document.getElementById('message').innerText = 'Login successful!';
             console.log(result);
