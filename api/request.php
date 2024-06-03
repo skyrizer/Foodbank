@@ -21,6 +21,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     switch ($action) {
         case 'addRequest':
             // Handle addRequest action
+            date_default_timezone_set('Asia/Kuala_Lumpur');
+            
             try {
                 if (isset($requestData['user_id']) && isset($requestData['donation_id'])) {
 

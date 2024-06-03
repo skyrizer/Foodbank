@@ -20,45 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     switch ($action) {
         case 'addRequest':
-            // Handle addRequest action
-            try {
-                if (isset($requestData['user_id']) && isset($requestData['donation_id'])) {
-
-                    $user_id = $requestData['user_id'];
-                    $donation_id = $requestData['donation_id'];
-                    $dateTime = date('Y-m-d H:i:s');
-
-                    // Start transaction
-                    $db->beginTransaction();
-
-                    // Insert into requests table
-                    $stmt = $db->prepare("INSERT INTO requests (dateTime, donation_id, user_id)
-                                          VALUES (:dateTime, :donation_id, :user_id)");
-                    $stmt->bindParam(':donation_id', $donation_id);
-                    $stmt->bindParam(':user_id', $user_id);
-                    $stmt->bindParam(':dateTime', $dateTime);
-                    $stmt->execute();
-
-                    // Update donations table
-                    $stmt = $db->prepare("UPDATE donations SET quantity = quantity - 1 WHERE id = :donation_id");
-                    $stmt->bindParam(':donation_id', $donation_id);
-                    $stmt->execute();
-
-                    // Commit transaction
-                    $db->commit();
-
-                    http_response_code(200);  // OK
-                    $response->message = "Request added and donation quantity updated successfully.";
-                } else {
-                    http_response_code(400);  // Bad Request
-                    $response->error = "User ID and Donation ID are required.";
-                }
-            } catch (Exception $ee) {
-                // Rollback transaction on error
-                $db->rollBack();
-                http_response_code(500);
-                $response->error = "Error occurred: " . $ee->getMessage();
-            }
+        
             break;
             
         case 'addOwner':
@@ -98,41 +60,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $response->error = "Error occurred " . $ee->getMessage();
             }
             break;
-
-        case 'dailyTotalRequestByUser':
-            // Handle totalCafe action
-            try {
-                $stmt = $db->prepare("SELECT COUNT(*) as total FROM requests WHERE user_id = :userId AND DATE(dateTime) = CURDATE()");
-                $stmt->bindParam(':userId', $userId);
-                $stmt->execute();
-                $result = $stmt->fetch(PDO::FETCH_ASSOC);
-                $totalReqByUser = $result['total'];
-
-                http_response_code(200);  // OK
-                $response->dailyTotalRequestByUser = $totalReqByUser;
-            } catch (Exception $ee) {
-                http_response_code(500);
-                $response->error = "Error occurred " . $ee->getMessage();
-            }
-            break;
-
-        case 'totalRequestByUser':
-            // Handle totalCafe action
-            try {
-                $stmt = $db->prepare("SELECT COUNT(*) as total FROM requests WHERE user_id = :userId");
-                $stmt->bindParam(':userId', $userId);
-                $stmt->execute();
-                $result = $stmt->fetch(PDO::FETCH_ASSOC);
-                $totalReqByUser = $result['total'];
-
-                http_response_code(200);  // OK
-                $response->totalReqByUser = $totalReqByUser;
-            } catch (Exception $ee) {
-                http_response_code(500);
-                $response->error = "Error occurred " . $ee->getMessage();
-            }
-            break;
-
 
         default:
             http_response_code(404);  // Not Found

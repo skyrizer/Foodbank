@@ -1,57 +1,54 @@
+// Function to get total daily donations
+async function getTotalDailyDonations() {
+    var userData = JSON.parse(sessionStorage.getItem("userData"));
+    var cafeId = userData.cafe_id;
 
-// Function to make an AJAX request
-function makeAjaxRequest(url) {
-    return fetch(url)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();
-        })
-        .catch(error => {
-            console.error('There was a problem with the fetch operation:', error);
-        });
+    const url = `../api/donation.php?action=totalDailyDonations&cafeId=${cafeId}`;
+
+    try {
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+
+        console.log(data);
+        console.log(data.totalDailyDonations);
+        console.log(data.totalDailyDonations.totalQuantity);
+
+        // Process the returned data
+        if (data.totalDailyDonations && data.totalDailyDonations.totalQuantity !== undefined) {
+            const totalQuantity = data.totalDailyDonations.totalQuantity;
+            // Update the DOM element with the fetched data
+            document.querySelector('.dailyDonation .text p').textContent = totalQuantity;
+        } else {
+            document.querySelector('.dailyDonation .text p').textContent = '0';
+        }
+    } catch (error) {
+        console.error(`Error occurred: ${error.message}`);
+        document.querySelector('.dailyDonation .text p').textContent = 'Error';
+    }
 }
 
-document.addEventListener("DOMContentLoaded", function () {
+async function setUserName() {
 
-    var cafeOwner = JSON.parse(sessionStorage.getItem('userData'));
-    console.log('Cafe Owner: ', cafeOwner);
+    var userData = JSON.parse(sessionStorage.getItem("userData"));
+    var name = userData.name
+    var cafeId = userData.cafe_id;
 
-    console.log('DOMContentLoaded event fired.');
+    document.querySelector('.user-info span').textContent = name;
 
-    // Define the promises array
-    var cafeOwner = [];
+        // Process the returned data
+        if (data.totalDailyDonations && data.totalDailyDonations.totalQuantity !== undefined) {
+            const totalQuantity = data.totalDailyDonations.totalQuantity;
+            // Update the DOM element with the fetched data
+            document.querySelector('.dailyDonation .text p').textContent = totalQuantity;
+        } else {
+            document.querySelector('.dailyDonation .text p').textContent = '0';
+        }
+   
+}
 
-    // AJAX call to calculate total student registration
-    cafeOwner.push(makeAjaxRequest("../api/donation.php?action=dailyFoodDonation&cafeId=1"));
-
-    // Wait for all promises to be resolved
-    Promise.all(cafeOwner)
-        .then(function (results) {
-            // Results is an array containing the resolved values from each promise
-            var [donation] = results;
-
-            if (donation.students.length === 0) {
-                // If the array is empty, set the donation to 0
-                donation = 0;
-            } else {
-                // If the array is not empty, use the length of the array as the donation value
-                donation = donation.students.length;
-            }
-
-            console.log("tadStuden: ",donation);
-
-            // Select and update the UI elements
-            var dailyDonation = document.querySelector('.dailyDonation p');
-            if (dailyDonation) {
-                dailyDonation.textContent = donation;
-            } else {
-                console.error('Total Student <p> element not found.');
-            }
-
-        })
-        .catch(function (error) {
-            console.error('Error:', error);
-        });
-});
+// Call the function to get total daily donations
+setUserName();
+getTotalDailyDonations();

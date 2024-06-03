@@ -56,15 +56,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Handle GET requests
     $action = isset($_GET['action']) ? $_GET['action'] : '';
-   
+
     switch ($action) {
-        case 'cafeOwner' || '':
+        case 'cafeOwner':
             // Handle totalCafe action
             try {
-                $stmt = $db->prepare("SELECT u.name,u.phone_no,c.name FROM users u 
-                                        JOIN cafes c ON u.cafe_id = c.id");
+                $stmt = $db->prepare("SELECT u.name AS ownerName,u.phone_no,c.name AS cafeName FROM users u 
+                JOIN cafes c ON u.cafe_id = c.id");
                 $stmt->execute();
-                $result = $stmt->fetchAll(PDO::FETCH_ASSOC);        
+                $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
                 http_response_code(200);  // OK
                 $response->cafeOwners = $result;

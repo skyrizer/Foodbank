@@ -80,3 +80,24 @@ function fetchData() {
       document.querySelector('.alert.alert-danger.alert-dismissible.fade.show[role="alert2"]').style.display = 'block';
     }
   }
+
+  async function setUserName() {
+
+    var userData = JSON.parse(sessionStorage.getItem("userData"));
+    var name = userData.name
+    var cafeId = userData.cafe_id;
+
+    document.querySelector('.user-info span').textContent = name;
+
+        // Process the returned data
+        if (data.totalDailyDonations && data.totalDailyDonations.totalQuantity !== undefined) {
+            const totalQuantity = data.totalDailyDonations.totalQuantity;
+            // Update the DOM element with the fetched data
+            document.querySelector('.dailyDonation .text p').textContent = totalQuantity;
+        } else {
+            document.querySelector('.dailyDonation .text p').textContent = '0';
+        }
+   
+}
+
+setUserName()

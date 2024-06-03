@@ -22,26 +22,26 @@ function fetchData(cafe_id) {
 
   // Function to update the table with data
   function updateTable(data) {
-    const tbody = document.querySelector('table tbody');
+    const tbody = document.querySelector('tbody');
+    let rows = '';
 
-    // Clear existing rows
-    tbody.innerHTML = '';
+    data.forEach((item, index) => {
+        const date = new Date(item.dateTime);
+        const formattedDate = date.toLocaleDateString('en-GB'); // Adjust the locale and options as needed
 
-    // Iterate over the data and create rows
-    data.forEach((item, index) => 
-    {
-      
-      const row = `<tr>
-                    <td>${index + 1}</td>
-                    <td>${item.name}</td>
-                    <td>${item.dateTime}</td>
-                    <td>${item.quantity}</td>
-                  </tr>`;
+        const row = `<tr>
+                        <td>${index + 1}</td>
+                        <td>${item.name}</td>
+                        <td>${formattedDate}</td>
+                        <td>${item.quantity}</td>
+                    </tr>`;
 
-      // Append the row to the tbody
-      tbody.innerHTML += row;
+        rows += row;
     });
-  }
+
+    // Set the innerHTML of tbody once with all rows
+    tbody.innerHTML = rows;
+}
 
   function searchServices() {
     // Get the search term
@@ -76,3 +76,24 @@ function fetchData(cafe_id) {
       document.querySelector('.alert.alert-danger.alert-dismissible.fade.show[role="alert2"]').style.display = 'block';
     }
   }
+
+  async function setUserName() {
+
+    var userData = JSON.parse(sessionStorage.getItem("userData"));
+    var name = userData.name
+    var cafeId = userData.cafe_id;
+
+    document.querySelector('.user-info span').textContent = name;
+
+        // Process the returned data
+        if (data.totalDailyDonations && data.totalDailyDonations.totalQuantity !== undefined) {
+            const totalQuantity = data.totalDailyDonations.totalQuantity;
+            // Update the DOM element with the fetched data
+            document.querySelector('.dailyDonation .text p').textContent = totalQuantity;
+        } else {
+            document.querySelector('.dailyDonation .text p').textContent = '0';
+        }
+   
+}
+
+setUserName()

@@ -1,12 +1,44 @@
+
+
+async function setUserName() {
+
+    var userData = JSON.parse(sessionStorage.getItem("userData"));
+    var name = userData.name
+    var cafeId = userData.cafe_id;
+
+    console.log(sessionStorage.getItem("userData"))
+
+    document.querySelector('.user-info span').textContent = name;
+
+}
+
+setUserName();
+
 document.addEventListener('DOMContentLoaded', function () {
     // Initialize the application
     init();
 
     // Function to initialize the application
     function init() {
+        
         fetchCafes();
         setupEventListeners();
+
+        
     }
+
+    async function setUserName() {
+
+        var userData = JSON.parse(sessionStorage.getItem("userData"));
+        var name = userData.name
+        var cafeId = userData.cafe_id;
+
+        console.log(sessionStorage.getItem("userData"))
+
+        document.querySelector('.user-info span').textContent = name;
+
+    }
+
 
     // Function to fetch cafes
     async function fetchCafes() {
@@ -81,3 +113,5 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 });
+
+
