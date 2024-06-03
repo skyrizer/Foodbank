@@ -24,13 +24,24 @@ document.getElementById('loginForm').addEventListener('submit', async function (
             
             sessionStorage.setItem('userData', JSON.stringify(result));
 
-            window.location.href = "adminDashboard.html";
-
             console.log(sessionStorage.getItem('userData'))
             // Login successful, handle the response
             document.getElementById('message').innerText = 'Login successful!';
             console.log(result);
             // Redirect to another page or perform any other desired actions
+
+            // Check if cafe_id and matric_no are not null
+            if (result.cafe_id) {
+                // Redirect to cafeOwnerDashboard
+                window.location.href = "cafeOwnerDashboard.html";
+            } else if (result.matric_no) {
+                // Redirect to studentDashboard
+                window.location.href = "studentDashboard.html";
+            } else if(result.matric_no == null && result.cafe_id == null) {
+                // Redirect to adminDashboard
+                window.location.href = "adminDashboard.html";
+            }
+
         } else {
             // Login failed, display the error message
             document.getElementById('message').innerText = result.error || 'Login failed!';
