@@ -43,7 +43,7 @@
                                 <option value="Cafe Satria 3">Cafe Satria 3</option>
                             </select>
                         </div>
-                        <button type="submit">Search</button>
+                        <button type="button" class="btn btn-primary" onclick="searchServices()">Search</button>
                     </form>
                     <br>
                     <div id="message"></div>
@@ -53,47 +53,27 @@
             <div class="displayReservation-container">
                 <h1>List of Foods</h1>
                 <div class="white-container">
-                    <div class="subcontainer">
-                        <h2>NASI LEMAK</h2>
-                        <h3>Available Quantity: 50</h3>
-                        <h4>Quantity to Reserve</h4>
-                        <div>
-                            <input type="number" id="nasilemak" name="quantity" value="0" min="0">
-                        </div>
-                        <br><button type="submit">Reserve</button>
-                    </div>
-                    <div class="subcontainer">
-                        <h2>MEE HOON</h2>
-                        <h3>Available Quantity: 50</h3>
-                        <h4>Quantity to Reserve</h4>
-                        <div>
-                            <input type="number" id="meehoon" name="quantity" value="0" min="0">
-                        </div>
-                        <br><button type="submit">Reserve</button>
-                    </div>
-                    <div class="subcontainer">
-                        <h2>MEE GORENG</h2>
-                        <h3>Available Quantity: 50</h3>
-                        <h4>Quantity to Reserve</h4>
-                        <div>
-                            <input type="number" id="meegoreng" name="quantity" value="0" min="0">
-                        </div>
-                        <br><button type="submit">Reserve</button>
-                    </div>
-                    <div class="subcontainer">
-                        <h2>NASI GORENG</h2>
-                        <h3>Available Quantity: 50</h3>
-                        <h4>Quantity to Reserve</h4>
-                        <div>
-                            <input type="number" id="nasigoreng" name="quantity" value="0" min="0">
-                        </div>
-                        <br><button type="submit">Reserve</button>
-                    </div>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Food Name</th>
+                                <th scope="col">Date Time</th>
+                                <th scope="col">Quantity</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
     </div>
-    <script src="../assets/js/adminDashboard.js"></script>
     <script src="../assets/js/sidebar.js"></script>
+    <script src="../assets/js/makeReservation.js"></script>
 </body>
 </html>

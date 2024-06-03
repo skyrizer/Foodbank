@@ -123,7 +123,16 @@ header {
     margin-bottom: 20px;
 }
 
-.student {
+.reservation {
+    flex: 1;
+    background-color: #fffefe;
+    padding: 20px;
+    margin-right: 10px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.dailyreservation {
     flex: 1;
     background-color: #fffefe;
     padding: 20px;
@@ -150,7 +159,8 @@ header {
 
 .student p,
 .cafe p,
-.reservation p {
+.reservation p,
+.dailyreservation p{
     font-size: 25px; /* Adjust the size of the paragraph text */
     font-weight: bold;
 }
