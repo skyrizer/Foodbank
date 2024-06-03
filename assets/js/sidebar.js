@@ -2,7 +2,7 @@
 document.addEventListener('DOMContentLoaded', function () {
     const currentUrl = window.location.pathname;
     
-    const path = "/foodbank/view";
+    const path = "/Foodbank/view";
 
     const links = {
         [path + '/adminDashboard.html']: 'dashboard-link',
