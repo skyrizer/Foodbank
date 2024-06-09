@@ -100,6 +100,45 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 } else if ($_SERVER["REQUEST_METHOD"] == "PUT") {
     // Handle PUT requests
 
+} else if ($_SERVER["REQUEST_METHOD"] == "DELETE") {
+    $action = isset($_GET['action']) ? $_GET['action'] : '';
+    $user_id = isset($_GET['user_id']) ? $_GET['user_id'] : '';
+
+    $requestData = json_decode(file_get_contents("php://input"), true);
+
+    switch ($action) {
+        case 'delCafeOwner':
+            // Handle addCafe action
+            try {
+
+                $user_id = $requestData['user_id'];
+
+                $stmt = $db->prepare("DELETE FROM users WHERE user_id = :user_id");
+                $stmt->bindParam(':user_id', $user_id);
+                $stmt->execute();
+
+                http_response_code(200);  // Created
+                $response->message = "Cafe owner delete successfully.";
+
+
+            } catch (Exception $ee) {
+                http_response_code(500);
+                $response->error = "Error occurred " . $ee->getMessage();
+            }
+            break;
+
+        case 'addOwner':
+            // Handle addOwner action
+            break;
+
+        // Add more cases for other POST actions
+
+        default:
+            http_response_code(404);  // Not Found
+            $response->error = "Action not found.";
+            break;
+
+    }
 }
 
 // Before sending the JSON response, set the content type header
