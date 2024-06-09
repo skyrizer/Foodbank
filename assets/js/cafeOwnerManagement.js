@@ -7,10 +7,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // Function to fetch data from the server
 function fetchData() {
-    fetch('../api/cafeOwner.php?action=cafeOwner ')
+    fetch('../api/cafeOwner.php?action=cafeOwner')
       .then(response => response.json())
       .then(data => {
-        console.log("DATA : ",data);
+
         // Call a function to update the table with the fetched data
         updateTable(data.cafeOwners);
       })
@@ -37,8 +37,7 @@ function fetchData() {
                     <td>${item.cafeName}</td>
                     <td>
                       <div class="button-column">
-                        <button type="button" class="btn btn-primary" onclick="editStudent(${item.id})">Edit</button>
-                        <button type="button" class="btn btn-danger" onclick="deleteStudent(${item.id})">Delete </button>
+                        <button type="button" class="btn btn-danger" onclick="deleteCafeOwner(${item.id})">Delete </button>
                       </div>
                     </td>
                   </tr>`;
@@ -91,15 +90,36 @@ function fetchData() {
 
     document.querySelector('.user-info span').textContent = name;
 
-        // Process the returned data
-        if (data.totalDailyDonations && data.totalDailyDonations.totalQuantity !== undefined) {
-            const totalQuantity = data.totalDailyDonations.totalQuantity;
-            // Update the DOM element with the fetched data
-            document.querySelector('.dailyDonation .text p').textContent = totalQuantity;
-        } else {
-            document.querySelector('.dailyDonation .text p').textContent = '0';
-        }
    
 }
 
-setUserName()
+setUserName();
+
+
+  function deleteCafeOwner(id)
+    {
+      console.log("ID : ", id);
+     
+      fetch('../api/cafeOwner.php?action=delCafeOwner&user_id='+id, {
+        method: 'DELETE', // Use the POST method
+        headers: {
+          'Content-Type': 'application/json' // Set the content type to JSON
+        },
+         // Convert the data object to a JSON string
+      })
+      .then(response => response.json())
+      .then(data => {
+        // Handle the response from the server
+        console.log("Cafe Owner Has Successfully deleted ");
+        setTimeout(function() {
+          window.location.href = "../view/cafeOwnerManagement.html";
+        }, 2000);
+        
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
+      });
+          
+    }
+
+    

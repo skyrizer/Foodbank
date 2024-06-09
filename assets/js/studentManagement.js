@@ -30,7 +30,8 @@ function fetchData() {
     data.forEach((item, index) => 
     {
       
-      const row = `<tr>
+      const row = `
+                  <tr>
                     <td>${index + 1}</td>
                     <td>${item.name}</td>
                     <td>${item.email}</td>
@@ -42,7 +43,8 @@ function fetchData() {
                         <button type="button" class="btn btn-danger" onclick="deleteStudent(${item.id})">Delete </button>
                       </div>
                     </td>
-                  </tr>`;
+                  </tr>
+                  `;
 
       // Append the row to the tbody
       tbody.innerHTML += row;

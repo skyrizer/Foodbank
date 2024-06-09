@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UTeM - Foodbank</title>
+    <link rel="stylesheet" href="../assets/css/cafeOwner.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <header id="header" class="header fixed-top">
+        <div class="header-content">
+            <div class="user-info">
+                <span></span>
+            </div>
+        </div>
+    </header>
+    <div class="container">
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <img src="../assets/logo/foodbank.png" alt="UTeM Logo" class="sidebar-logo">
+                <h2>UTeM Foodbank</h2>
+            </div>
+            <ul>
+                <li><a href="cafeOwnerDashboard.html" id="dashboard-link"><i class="fas fa-tachometer-alt"></i> DASHBOARD</a></li>
+                <li><a href="makeDonation.html" id="dashboard-link"><i class="fas fa-cubes"></i> MAKE DONATION</a></li>
+                <li><a href="historyDonation.html" id="dashboard-link"><i class="fas fa-history"></i> HISTORY OF DONATION</a></li>
+            </ul>
+        </div>
+        <div class="main-content">
+           
+            <div class="registerStudent-container">
+                <h1>Food Donation Details</h1>
+                <div class="white-container">
+                    <form id="foodDonationForm">
+                        <div class="input-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" readOnly>
+                        </div>
+                        <div class="input-group">
+                            <label for="quantity">Food Quantity</label>
+                            <input type="text" id="quantity" name="quantity" required>
+                        </div>
+                        <button type="submit">Add Food</button>
+                    </form>
+                    <br>
+                    <div id="message"></div>
+                </div>
+               
+            </div>
+            
+        </div>
+    </div>
+    <script src="../assets/js/editDonation.js"></script>
+    <script src="../assets/js/sidebar.js"></script>
+
+</body>
+</html>

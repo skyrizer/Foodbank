@@ -3,7 +3,8 @@
 $hostname = "localhost";
 $database = "foodbank";
 $username = "root";
-$password = "Wafir@020304";
+//password = "Wafir@020304";
+$password = "";
 
 $db = new PDO("mysql:host=$hostname;dbname=$database", $username, $password);
 
@@ -56,12 +57,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Handle GET requests
     $action = isset($_GET['action']) ? $_GET['action'] : '';
-
     switch ($action) {
         case 'cafeOwner':
             // Handle totalCafe action
             try {
-                $stmt = $db->prepare("SELECT u.name AS ownerName,u.phone_no,c.name AS cafeName FROM users u 
+                $stmt = $db->prepare("SELECT u.name AS ownerName,u.phone_no,c.name AS cafeName, u.id FROM users u 
                 JOIN cafes c ON u.cafe_id = c.id");
                 $stmt->execute();
                 $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -90,7 +90,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
             break;
 
-
         default:
             http_response_code(404);  // Not Found
             $response->error = "Action not found.";
@@ -111,9 +110,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Handle addCafe action
             try {
 
-                $user_id = $requestData['user_id'];
 
-                $stmt = $db->prepare("DELETE FROM users WHERE user_id = :user_id");
+                $stmt = $db->prepare("DELETE FROM users WHERE id = :user_id");
                 $stmt->bindParam(':user_id', $user_id);
                 $stmt->execute();
 

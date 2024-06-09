@@ -3,7 +3,8 @@
 $hostname = "localhost";
 $database = "foodbank";
 $username = "root";
-$password = "Wafir@020304";
+//password = "Wafir@020304";
+$password = "";
 
 $db = new PDO("mysql:host=$hostname;dbname=$database", $username, $password);
 
@@ -146,24 +147,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             try {
                 if (
                     isset($requestData['name']) && isset($requestData['quantity']) &&
-                    isset($requestData['cafe_id'])
-                ) {
+                    isset($requestData['donation_id'])) 
+                  {
                     $name = $requestData['name'];
                     $quantity = $requestData['quantity'];
                     $dateTime = date('Y-m-d H:i:s');
-                    $cafe_id = $requestData['cafe_id'];
+                    $donation_id = $requestData['donation_id'];
         
                     $stmt = $db->prepare("UPDATE donations 
                         SET quantity = :quantity,
                             dateTime = :dateTime
-                        WHERE name = :name 
-                            AND cafe_id = :cafe_id
+                        WHERE id = :donation_id
                             AND DATE(dateTime) = CURDATE()"); // Only update if the dateTime is today
         
-                    $stmt->bindParam(':name', $name);
                     $stmt->bindParam(':quantity', $quantity);
                     $stmt->bindParam(':dateTime', $dateTime);
-                    $stmt->bindParam(':cafe_id', $cafe_id);
+                    $stmt->bindParam(':donation_id', $donation_id);
                     $stmt->execute();
         
                     if ($stmt->rowCount() > 0) {

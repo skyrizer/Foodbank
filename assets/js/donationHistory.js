@@ -34,6 +34,11 @@ function fetchData(cafe_id) {
                         <td>${item.name}</td>
                         <td>${formattedDate}</td>
                         <td>${item.quantity}</td>
+                        <td>
+                          <div class="button-column">
+                            <button type="button" class="btn btn-primary" onclick="editQuantity(${item.id},'${item.name}',${item.quantity})">EDIT </button>
+                          </div>
+                        </td>
                     </tr>`;
 
         rows += row;
@@ -96,4 +101,22 @@ function fetchData(cafe_id) {
    
 }
 
-setUserName()
+setUserName();
+
+function editQuantity(donation_id, name, quantity){
+  // Get the tourismServiceId from the URL
+
+  const editDonation ={
+    id: donation_id,
+    name:name,
+    quantity: quantity,
+  };
+
+  sessionStorage.setItem('editDonation', JSON.stringify(editDonation));
+
+  console.log(sessionStorage.getItem('editDonation'));
+
+  window.open(`editDonation.html?donation_id=${donation_id}`,'_self');
+
+
+}
