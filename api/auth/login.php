@@ -48,11 +48,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 				];
             } else {
                 http_response_code(401);  // Unauthorized
-                $response->error = "Invalid email or password.";
+                $response = [
+                    'error' => "Invalid email or password."
+                ];
             }
         } else {
             http_response_code(400);  // Bad Request
-            $response->error = "Email and password are required.";
+            $response = [
+                'error' => "Email and password are required."
+            ];
         }
     } catch (Exception $ee) {
         http_response_code(500);
