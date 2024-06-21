@@ -3,7 +3,7 @@
 $hostname = "localhost";
 $database = "foodbank";
 $username = "root";
-$password = "Wafir@020304";
+$password = "Wafir@2259";
 
 $db = new PDO("mysql:host=$hostname;dbname=$database", $username, $password);
 
